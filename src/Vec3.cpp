@@ -162,6 +162,13 @@ Vec3& Vec3::normalize() {
     return *this;
 }
 
+Vec3 Vec3::normalized() const {
+    if (this->magnitude() == 0.0) {
+        throw Vec3::DivisionByZeroException();
+    }
+    return *this / this->magnitude();
+}
+
 // uses float comparison, bad ?
 bool Vec3::operator==(const Vec3& v) const {
     return __x == v.__x && __y == v.__y && __z == v.__z;

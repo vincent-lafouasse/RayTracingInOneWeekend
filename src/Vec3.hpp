@@ -27,6 +27,7 @@ struct Vec3 {
     double dot(const Vec3& v) const;
     Vec3 cross(const Vec3& v) const;
     Vec3& normalize();
+    Vec3 normalized() const;
 
     double x() const;
     double y() const;
