@@ -1,5 +1,4 @@
 #pragma once
-#include <iostream>
 #include <ostream>
 
 struct Vec3 {
@@ -39,10 +38,22 @@ struct Vec3 {
     double& g();
     double& b();
 
+    double operator[](std::size_t i) const;
+    double& operator[](std::size_t i);
+
     bool operator==(const Vec3& v) const;
     bool operator!=(const Vec3& v) const;
 
     friend std::ostream& operator<<(std::ostream& os, const Vec3& v);
+
+    class DivisionByZeroException : public std::runtime_error {
+    public:
+        DivisionByZeroException(const char* what): runtime_error(what) {};
+    };
+    class OutOfBoundsException : public std::runtime_error {
+    public:
+        OutOfBoundsException(const char* what): runtime_error(what) {};
+    };
 
    private:
     double __x;
