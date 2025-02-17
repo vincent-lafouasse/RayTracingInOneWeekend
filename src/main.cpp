@@ -8,8 +8,14 @@ constexpr int DISPLAY_HEIGHT = 800;
 };  // namespace Config
 
 Color ray_color(const Ray& r) {
-    (void)r;
-    return Color(0, 0, 0);
+    const Vec3 unit_direction = r.direction().normalized();
+    const Color white(1.0, 1.0, 1.0);
+    const Color blue(0.0, 0.0, 1.0);
+
+    // a == 0 when y == -1
+    // a == 1 when y == 1
+    const double a = 0.5 * (unit_direction.y() + 1.0);
+    return (1.0 - a) * white + a * blue;
 }
 
 int main() {
