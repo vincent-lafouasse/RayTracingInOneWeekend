@@ -11,6 +11,12 @@ int main() {
         static_cast<int>(Config::DISPLAY_ASPECT_RATIO * Config::DISPLAY_HEIGHT);
     constexpr int display_height = Config::DISPLAY_HEIGHT;
 
+    constexpr double effective_aspect_ratio =
+        static_cast<double>(display_width) / display_height;
+
+    constexpr double viewport_height = 2.0;
+    constexpr double viewport_width = viewport_height * effective_aspect_ratio;
+
     std::cout << "P3\n" << display_width << " " << display_height << "\n255\n";
 
     for (int row = 0; row < display_height; ++row) {
