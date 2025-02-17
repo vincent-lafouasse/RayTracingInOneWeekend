@@ -25,7 +25,9 @@ struct Vec3 final {
 
     double magnitude() const;
     double dot(const Vec3& v) const;
+    static double dot(const Vec3& v1, const Vec3& v2);
     Vec3 cross(const Vec3& v) const;
+    static Vec3 cross(const Vec3& v1, const Vec3& v2);
     Vec3& normalize();
     Vec3 normalized() const;
 
