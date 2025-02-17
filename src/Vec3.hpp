@@ -47,14 +47,15 @@ struct Vec3 {
     friend std::ostream& operator<<(std::ostream& os, const Vec3& v);
 
     class DivisionByZeroException : public std::runtime_error {
-    public:
-        DivisionByZeroException(const char* what): runtime_error(what) {};
-        DivisionByZeroException(): DivisionByZeroException("Division by zero") {};
+       public:
+        DivisionByZeroException(const char* what) : runtime_error(what) {};
+        DivisionByZeroException()
+            : DivisionByZeroException("Division by zero") {};
     };
     class OutOfBoundsException : public std::runtime_error {
-    public:
-        OutOfBoundsException(const char* what): runtime_error(what) {};
-        OutOfBoundsException(): OutOfBoundsException("Out of bounds") {};
+       public:
+        OutOfBoundsException(const char* what) : runtime_error(what) {};
+        OutOfBoundsException() : OutOfBoundsException("Out of bounds") {};
     };
 
    private:
