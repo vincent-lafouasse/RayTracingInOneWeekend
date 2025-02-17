@@ -8,13 +8,14 @@ set(CMAKE_CXX_FLAGS "-Wall -Wextra -pedantic -g3")
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 set(EXEC_NAME RayTracer)
-add_executable(${EXEC_NAME}
-)
+add_executable(${EXEC_NAME})
 
 target_sources(${EXEC_NAME} PRIVATE
     src/main.cpp
     src/Vec3.cpp
     src/Vec3.hpp
+    src/Color.cpp
+    src/Color.hpp
 )
 
 target_include_directories(${EXEC_NAME} PUBLIC

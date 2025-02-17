@@ -69,4 +69,3 @@ struct Vec3 {
 };
 
 using Point3 = Vec3;
-using Color = Vec3;
