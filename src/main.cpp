@@ -12,7 +12,7 @@ int main() {
         std::clog << "Scanlines remaining: " << (height - y) << std::endl;
         for (int x = 0; x < width; ++x) {
             Color color(x, 0, y);
-            color /= 255.999;
+            color /= size;
 
             writeColor(std::cout, color);
             std::cout << '\n';
