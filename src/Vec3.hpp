@@ -1,10 +1,11 @@
 #pragma once
 
 struct Vec3 {
-    Vec3();
+    Vec3() = default;
     Vec3(double x, double y, double z);
-    Vec3(const Vec3& v);
-    Vec3& operator=(const Vec3& v);
+    Vec3(const Vec3& v) = default;
+    Vec3& operator=(const Vec3& v) = default;
+    ~Vec3() = default;
 
     Vec3& operator+=(const Vec3& v);
     Vec3& operator-=(const Vec3& v);
