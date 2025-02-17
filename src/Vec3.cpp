@@ -44,6 +44,18 @@ double& Vec3::b() {
     return this->z();
 };
 
+Vec3 Vec3::operator+(const Vec3& v) const {
+    return Vec3(__x + v.__x, __y + v.__y, __z + v.__z);
+}
+
+Vec3 Vec3::operator-(const Vec3& v) const {
+    return *this + -v;
+}
+
+Vec3 Vec3::operator-() const {
+    return Vec3(-__x, -__y, -__z);
+}
+
 Vec3& Vec3::operator+=(const Vec3& v) {
     this->__x += v.__x;
     this->__y += v.__y;
