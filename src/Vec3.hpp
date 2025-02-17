@@ -52,13 +52,15 @@ struct Vec3 final {
 
     class DivisionByZeroException final : public std::runtime_error {
        public:
-        DivisionByZeroException(const char* what) : runtime_error(what) {};
+        explicit DivisionByZeroException(const char* what)
+            : runtime_error(what) {};
         DivisionByZeroException()
             : DivisionByZeroException("Division by zero") {};
     };
     class OutOfBoundsException final : public std::runtime_error {
        public:
-        OutOfBoundsException(const char* what) : runtime_error(what) {};
+        explicit OutOfBoundsException(const char* what)
+            : runtime_error(what) {};
         OutOfBoundsException() : OutOfBoundsException("Out of bounds") {};
     };
 
