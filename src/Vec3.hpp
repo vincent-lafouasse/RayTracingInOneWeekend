@@ -69,3 +69,6 @@ struct Vec3 {
 };
 
 using Point3 = Vec3;
+
+Vec3 operator*(double s, const Vec3& v);
+Vec3 operator/(double s, const Vec3& v);

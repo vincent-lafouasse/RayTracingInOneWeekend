@@ -12,6 +12,7 @@ class Ray {
 
     Point3 origin() const;
     Vec3 direction() const;
+    Point3 at(double t) const;
 
     class NullDirectionException : public std::runtime_error {
        public:

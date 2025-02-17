@@ -93,6 +93,14 @@ Vec3 Vec3::operator/(double s) const {
     return *this * (1 / s);
 }
 
+Vec3 operator*(double s, const Vec3& v) {
+    return v * s;
+}
+
+Vec3 operator/(double s, const Vec3& v) {
+    return v / s;
+}
+
 Vec3& Vec3::operator+=(const Vec3& v) {
     this->__x += v.__x;
     this->__y += v.__y;

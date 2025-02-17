@@ -23,3 +23,7 @@ Point3 Ray::origin() const {
 Vec3 Ray::direction() const {
     return this->__direction;
 }
+
+Point3 Ray::at(double t) const {
+    return origin() + t * direction();
+}
