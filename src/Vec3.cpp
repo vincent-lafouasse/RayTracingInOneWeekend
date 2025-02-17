@@ -112,6 +112,14 @@ Vec3& Vec3::normalize() {
     return *this;
 }
 
+bool Vec3::operator==(const Vec3& v) const {
+    return __x == v.__x && __y == v.__y && __z == v.__z;
+}
+
+bool Vec3::operator!=(const Vec3& v) const {
+    return !(*this == v);
+}
+
 std::ostream& operator<<(std::ostream& os, const Vec3& v) {
     os << "(" << v.x() << "," << v.y() << "," << v.z() << ")";
     return os;

@@ -39,6 +39,9 @@ struct Vec3 {
     double& g();
     double& b();
 
+    bool operator==(const Vec3& v) const;
+    bool operator!=(const Vec3& v) const;
+
     friend std::ostream& operator<<(std::ostream& os, const Vec3& v);
 
    private:
