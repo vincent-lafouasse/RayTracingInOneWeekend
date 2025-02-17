@@ -2,7 +2,7 @@
 
 #include "Vec3.hpp"
 
-class Ray {
+class Ray final {
    public:
     Ray() = default;
     Ray(const Vec3& origin, const Vec3& direction);
@@ -14,7 +14,7 @@ class Ray {
     Vec3 direction() const;
     Point3 at(double t) const;
 
-    class NullDirectionException : public std::runtime_error {
+    class NullDirectionException final : public std::runtime_error {
        public:
         NullDirectionException(const char* what) : runtime_error(what) {};
         NullDirectionException()
