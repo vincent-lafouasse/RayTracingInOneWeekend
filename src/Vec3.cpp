@@ -82,6 +82,17 @@ Vec3 Vec3::operator-() const {
     return Vec3(-__x, -__y, -__z);
 }
 
+Vec3 Vec3::operator*(double s) const {
+    return Vec3(__x * s, __y * s, __z * s);
+}
+
+Vec3 Vec3::operator/(double s) const {
+    if (s == 0.0) {
+        throw Vec3::OutOfBoundsException();
+    }
+    return *this * (1 / s);
+}
+
 Vec3& Vec3::operator+=(const Vec3& v) {
     this->__x += v.__x;
     this->__y += v.__y;
