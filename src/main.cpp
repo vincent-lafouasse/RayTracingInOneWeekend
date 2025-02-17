@@ -2,12 +2,14 @@
 #include "Color.hpp"
 
 namespace Config {
-constexpr int SIZE = 256;
-};
+constexpr double DISPLAY_ASPECT_RATIO = 16.0 / 9.0;
+constexpr int DISPLAY_HEIGHT = 800;
+};  // namespace Config
 
 int main() {
-    constexpr int width = Config::SIZE;
-    constexpr int height = Config::SIZE;
+    constexpr int width =
+        static_cast<int>(Config::DISPLAY_ASPECT_RATIO * Config::DISPLAY_HEIGHT);
+    constexpr int height = Config::DISPLAY_HEIGHT;
 
     std::cout << "P3\n" << width << " " << height << "\n255\n";
 
