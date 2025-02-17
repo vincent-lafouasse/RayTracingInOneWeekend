@@ -20,7 +20,8 @@ struct Vec3 {
     Vec3 cross(const Vec3& v) const;
     Vec3& normalize();
 
-    double x;
-    double y;
-    double z;
+   private:
+    double __x;
+    double __y;
+    double __z;
 };
