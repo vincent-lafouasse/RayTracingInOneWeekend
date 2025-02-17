@@ -148,6 +148,12 @@ double Vec3::dot(const Vec3& v) const {
     return this->__x * v.__x + this->__y * v.__y + this->__z * v.__z;
 }
 
+Vec3 Vec3::cross(const Vec3& v) const {
+    return Vec3(this->y() * v.z() - this->z() * v.y(),
+                this->z() * v.x() - this->x() * v.z(),
+                this->x() * v.y() - this->y() * v.x());
+}
+
 Vec3& Vec3::normalize() {
     if (this->magnitude() == 0.0) {
         throw Vec3::DivisionByZeroException();
