@@ -1,4 +1,5 @@
 #include <iostream>
+#include "Vec3.hpp"
 
 int main() {
     constexpr int size = 256;
