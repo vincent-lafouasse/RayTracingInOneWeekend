@@ -63,3 +63,6 @@ struct Vec3 {
     double __y;
     double __z;
 };
+
+using Point3 = Vec3;
+using Color = Vec3;
