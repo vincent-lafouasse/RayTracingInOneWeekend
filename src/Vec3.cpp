@@ -149,8 +149,7 @@ Vec3& Vec3::operator-=(const double s) {
 }
 
 double Vec3::magnitude() const {
-    return std::sqrt(this->__x * this->__x + this->__y * this->__y +
-                     this->__z * this->__z);
+    return std::sqrt(this->dot(*this));
 }
 
 double Vec3::dot(const Vec3& v) const {
