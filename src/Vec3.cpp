@@ -1,6 +1,6 @@
 #include "Vec3.hpp"
 
-#include <valarray>
+#include <cmath>
 
 Vec3::Vec3(double x, double y, double z) : x(x), y(y), z(z) {}
 
