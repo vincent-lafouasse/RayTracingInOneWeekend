@@ -2,7 +2,8 @@
 
 #include <cmath>
 
-Vec3::Vec3(double x, double y, double z) : __x(x), __y(y), __z(z) {}
+Vec3::Vec3(const double x, const double y, const double z)
+    : __x(x), __y(y), __z(z) {}
 
 // TODO: complete rule of 5
 
@@ -44,7 +45,7 @@ double& Vec3::b() {
     return this->z();
 };
 
-double Vec3::operator[](std::size_t i) const {
+double Vec3::operator[](const std::size_t i) const {
     switch (i) {
         case 0:
             return this->x();
@@ -57,7 +58,7 @@ double Vec3::operator[](std::size_t i) const {
     }
 }
 
-double& Vec3::operator[](std::size_t i) {
+double& Vec3::operator[](const std::size_t i) {
     switch (i) {
         case 0:
             return this->x();
@@ -82,22 +83,22 @@ Vec3 Vec3::operator-() const {
     return Vec3(-__x, -__y, -__z);
 }
 
-Vec3 Vec3::operator*(double s) const {
+Vec3 Vec3::operator*(const double s) const {
     return Vec3(__x * s, __y * s, __z * s);
 }
 
-Vec3 Vec3::operator/(double s) const {
+Vec3 Vec3::operator/(const double s) const {
     if (s == 0.0) {
         throw Vec3::OutOfBoundsException();
     }
     return *this * (1 / s);
 }
 
-Vec3 operator*(double s, const Vec3& v) {
+Vec3 operator*(const double s, const Vec3& v) {
     return v * s;
 }
 
-Vec3 operator/(double s, const Vec3& v) {
+Vec3 operator/(const double s, const Vec3& v) {
     return v / s;
 }
 
@@ -115,14 +116,14 @@ Vec3& Vec3::operator-=(const Vec3& v) {
     return *this;
 }
 
-Vec3& Vec3::operator*=(double s) {
+Vec3& Vec3::operator*=(const double s) {
     this->__x *= s;
     this->__y *= s;
     this->__z *= s;
     return *this;
 }
 
-Vec3& Vec3::operator/=(double s) {
+Vec3& Vec3::operator/=(const double s) {
     if (s == 0.0) {
         throw Vec3::DivisionByZeroException();
     }
@@ -133,14 +134,14 @@ Vec3& Vec3::operator/=(double s) {
     return *this;
 }
 
-Vec3& Vec3::operator+=(double s) {
+Vec3& Vec3::operator+=(const double s) {
     this->__x += s;
     this->__y += s;
     this->__z += s;
     return *this;
 }
 
-Vec3& Vec3::operator-=(double s) {
+Vec3& Vec3::operator-=(const double s) {
     this->__x -= s;
     this->__y -= s;
     this->__z -= s;

@@ -24,6 +24,6 @@ Vec3 Ray::direction() const {
     return this->__direction;
 }
 
-Point3 Ray::at(double t) const {
+Point3 Ray::at(const double t) const {
     return origin() + t * direction();
 }
