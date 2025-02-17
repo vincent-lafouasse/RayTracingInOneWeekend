@@ -78,6 +78,10 @@ Vec3& Vec3::operator*=(double s) {
 }
 
 Vec3& Vec3::operator/=(double s) {
+    if (s == 0.0) {
+        throw Vec3::DivisionByZeroException();
+    }
+
     this->__x /= s;
     this->__y /= s;
     this->__z /= s;
@@ -108,6 +112,9 @@ double Vec3::dot(const Vec3& v) const {
 }
 
 Vec3& Vec3::normalize() {
+    if (this->magnitude == 0.0) {
+        throw Vec3::DivisionByZeroException();
+    }
     *this /= this->magnitude();
     return *this;
 }
