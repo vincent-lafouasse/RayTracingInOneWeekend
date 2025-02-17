@@ -16,6 +16,8 @@ target_sources(${EXEC_NAME} PRIVATE
     src/Vec3.hpp
     src/Color.cpp
     src/Color.hpp
+    src/Ray.cpp
+    src/Ray.hpp
 )
 
 target_include_directories(${EXEC_NAME} PUBLIC
