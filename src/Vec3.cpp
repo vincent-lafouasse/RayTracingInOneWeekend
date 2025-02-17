@@ -112,6 +112,7 @@ Vec3& Vec3::normalize() {
     return *this;
 }
 
+// uses float comparison, bad ?
 bool Vec3::operator==(const Vec3& v) const {
     return __x == v.__x && __y == v.__y && __z == v.__z;
 }
