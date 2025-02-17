@@ -8,10 +8,10 @@ int main() {
 
     std::cout << "P3\n" << width << " " << height << "\n255\n";
 
-    for (int y = 0; y < height; ++y) {
-        std::clog << "Scanlines remaining: " << (height - y) << std::endl;
-        for (int x = 0; x < width; ++x) {
-            Color color(x, 0, y);
+    for (int col = 0; col < height; ++col) {
+        std::clog << "Scanlines remaining: " << (height - col) << std::endl;
+        for (int row = 0; row < width; ++row) {
+            Color color(row, 0, col);
             color /= size - 1;
 
             writeColor(std::cout, color);
