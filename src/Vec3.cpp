@@ -44,6 +44,32 @@ double& Vec3::b() {
     return this->z();
 };
 
+double Vec3::operator[](std::size_t i) const {
+    switch (i) {
+        case 0:
+            return this->x();
+        case 1:
+            return this->y();
+        case 2:
+            return this->z();
+        default:
+            throw Vec3::OutOfBoundsException();
+    }
+}
+
+double& Vec3::operator[](std::size_t i) {
+    switch (i) {
+        case 0:
+            return this->x();
+        case 1:
+            return this->y();
+        case 2:
+            return this->z();
+        default:
+            throw Vec3::OutOfBoundsException();
+    }
+}
+
 Vec3 Vec3::operator+(const Vec3& v) const {
     return Vec3(__x + v.__x, __y + v.__y, __z + v.__z);
 }
@@ -112,7 +138,7 @@ double Vec3::dot(const Vec3& v) const {
 }
 
 Vec3& Vec3::normalize() {
-    if (this->magnitude == 0.0) {
+    if (this->magnitude() == 0.0) {
         throw Vec3::DivisionByZeroException();
     }
     *this /= this->magnitude();
