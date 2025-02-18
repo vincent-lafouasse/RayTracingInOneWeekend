@@ -14,13 +14,28 @@ const TARGET_ASPECT_RATIO: f64 = 16.0 / 9.0;
 const TARGET_HEIGHT: u32 = 600;
 
 const WHITE: Color = Color::new(1.0, 1.0, 1.0);
+const RED: Color = Color::new(1.0, 0.0, 0.0);
 const LIGHT_BLUE: Color = Color::new(0.5, 0.7, 1.0);
 
 fn ray_color(ray: &Ray) -> Color {
+    if (hit_sphere(Point3::new(0.0, 0.0, -1.0), 0.5, &ray)) {
+        return RED;
+    }
+
     let unit_direction = ray.direction.normalize();
     let a: f64 = 0.5 * (unit_direction.y + 1.0);
 
     (1.0 - a) * WHITE + a * LIGHT_BLUE
+}
+
+fn hit_sphere(center: Point3, radius: f64, ray: &Ray) -> bool {
+    let oc = center - ray.origin;
+    let a = ray.direction.dot(ray.direction);
+    let b = -2.0 * ray.direction.dot(oc);
+    let c = oc.dot(oc) - radius * radius;
+    let discriminant = b * b - 4.0 * a * c;
+
+    (discriminant >= 0.0)
 }
 
 fn main() {
