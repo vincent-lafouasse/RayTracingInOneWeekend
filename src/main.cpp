@@ -17,7 +17,7 @@ Color ray_color(const Ray& r) {
     const Vec3 unit_direction = r.direction().normalized();
 
     // a == 0 when y == -1 -> white
-    // a == 1 when y == 1  -> blue
+    // a == 1 when y == 1  -> black
     const double a = 0.5 * (unit_direction.y() + 1.0);
     return (1.0 - a) * Colors::WHITE + a * Colors::BLACK;
 }
