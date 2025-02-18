@@ -19,18 +19,24 @@ struct Sphere {
     Point3 center;
     double radius;
 
-    bool is_hit(const Ray& r) const {
+    // returns the value of t in the equation Ray = origin + t * direction
+    double is_hit(const Ray& r) const {
         const Vec3 oc = this->center - r.origin();
         const double a = Vec3::dot(r.direction(), r.direction());
         const double b = -2.0 * Vec3::dot(oc, r.direction());
         const double c = Vec3::dot(oc, oc) - this->radius * this->radius;
         const double discriminant = b * b - 4 * a * c;
-        return discriminant >= 0.0;
+
+        if (discriminant < 0) {
+            return -1.0;
+        } else {
+            return (-b - std::sqrt(discriminant)) / (2.0 * a);
+        }
     }
 };
 
 Color ray_color(const Ray& r, const Sphere& s) {
-    if (s.is_hit(r))
+    if (s.is_hit(r) > 0.0)
         return Colors::RED;
 
     const Vec3 unit_direction = r.direction().normalized();
