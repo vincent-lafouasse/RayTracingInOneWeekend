@@ -5,18 +5,20 @@ mod vec3;
 
 use crate::vec3::Color;
 
-const DISPLAY_WIDTH: u32 = 1600;
-const DISPLAY_HEIGHT: u32 = 900;
+const TARGET_ASPECT_RATIO: f64 = 16.0 / 9.0;
+const TARGET_HEIGHT: u32 = 600;
 
 fn main() {
-    write_ppm_header(DISPLAY_WIDTH, DISPLAY_HEIGHT);
+    let display_height: u32 = TARGET_HEIGHT;
+    let display_width: u32 = (TARGET_HEIGHT as f64 * TARGET_ASPECT_RATIO) as u32;
+    write_ppm_header(display_width, display_height);
 
-    for row in 0..DISPLAY_HEIGHT {
-        log_progress(row as f32 / (DISPLAY_HEIGHT as f32 - 1.0));
-        for col in 0..DISPLAY_WIDTH {
-            let red: f64 = row as f64 / (DISPLAY_WIDTH as f64 - 1.0);
+    for row in 0..display_height {
+        log_progress(row as f32 / (display_height as f32 - 1.0));
+        for col in 0..display_width {
+            let red: f64 = row as f64 / (display_width as f64 - 1.0);
             let green: f64 = 0.0;
-            let blue: f64 = col as f64 / (DISPLAY_HEIGHT as f64 - 1.0);
+            let blue: f64 = col as f64 / (display_height as f64 - 1.0);
 
             let color = Color::new(red, green, blue);
             write_color(&color);
