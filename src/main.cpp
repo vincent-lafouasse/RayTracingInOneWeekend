@@ -7,15 +7,19 @@ constexpr double DISPLAY_ASPECT_RATIO = 16.0 / 9.0;
 constexpr int DISPLAY_HEIGHT = 800;
 };  // namespace Config
 
+namespace Colors {
+const Color WHITE(1.0, 1.0, 1.0);
+const Color BLUE(0.0, 0.0, 1.0);
+const Color BLACK(0.0, 0.0, 0.0);
+};  // namespace Colors
+
 Color ray_color(const Ray& r) {
     const Vec3 unit_direction = r.direction().normalized();
-    const Color white(1.0, 1.0, 1.0);
-    const Color blue(0.0, 0.0, 1.0);
 
     // a == 0 when y == -1 -> white
     // a == 1 when y == 1  -> blue
     const double a = 0.5 * (unit_direction.y() + 1.0);
-    return (1.0 - a) * white + a * blue;
+    return (1.0 - a) * Colors::WHITE + a * Colors::BLACK;
 }
 
 int main() {
