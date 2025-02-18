@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Color.hpp"
 #include "Ray.hpp"
+#include "Sphere.hpp"
 
 namespace Config {
 constexpr double DISPLAY_ASPECT_RATIO = 16.0 / 9.0;
@@ -15,33 +16,11 @@ const Color BLACK(0.0, 0.0, 0.0);
 const Color RED(1.0, 0.0, 0.0);
 };  // namespace Colors
 
-struct Sphere {
-    Point3 center;
-    double radius;
-
-    // returns the value of t in the equation Ray = origin + t * direction
-    double is_hit(const Ray& r) const {
-        const Vec3 oc = this->center - r.origin();
-        const double a = Vec3::dot(r.direction(), r.direction());
-        const double h = Vec3::dot(r.direction(), oc);
-        const double c = Vec3::dot(oc, oc) - radius * radius;
-        const double discriminant = h * h - a * c;
-
-        if (discriminant < 0) {
-            return -1.0;
-        } else {
-            return (h - std::sqrt(discriminant)) / a;
-        }
-    }
-};
-
 Color ray_color(const Ray& r, const Sphere& s) {
-    const double t = s.is_hit(r);
-    if (t > 0.0) {
-        const Point3 intersection = r.at(t) - s.center;
-        const Vec3 normal = intersection.normalized();
+    HitRecord rec;
+    if (s.hit(r, 0.0, 1.0, rec)) {
         // scale from [-1, 1] to [0, 1]
-        return 0.5 * (normal + Vec3(1, 1, 1));
+        return 0.5 * (rec.normal + Vec3(1, 1, 1));
     }
 
     const Vec3 unit_direction = r.direction().normalized();
@@ -79,7 +58,7 @@ int main() {
     const Point3 pixel00 =
         viewport_top_left + 0.5 * (pixel_delta_u + pixel_delta_v);
 
-    const Sphere sphere{.center = Point3(0, 0, -1), .radius = 0.5};
+    const Sphere sphere(Point3(0, 0, -1), 0.5);
 
     std::cout << "P3\n" << display_width << " " << display_height << "\n255\n";
 
