@@ -7,12 +7,25 @@ type Color = Vec3;
 const DISPLAY_WIDTH: u32 = 1600;
 const DISPLAY_HEIGHT: u32 = 900;
 
+fn log_progress(advancement: f32) {
+    let bar_len = 30;
+    let increment = 1.0 / bar_len as f32;
+    let advancement: usize = (advancement / increment) as usize;
+
+    eprintln!(
+        "[{}{}]",
+        "*".repeat(advancement),
+        " ".repeat(bar_len - advancement - 1)
+    );
+}
+
 fn main() {
     println!("P3");
     println!("{DISPLAY_WIDTH} {DISPLAY_HEIGHT}");
     println!("255");
 
     for row in 0..DISPLAY_HEIGHT {
+        log_progress(row as f32 / (DISPLAY_HEIGHT as f32 - 1.0));
         for col in 0..DISPLAY_WIDTH {
             let red: f64 = row as f64 / (DISPLAY_WIDTH as f64 - 1.0);
             let green: f64 = 0.0;
