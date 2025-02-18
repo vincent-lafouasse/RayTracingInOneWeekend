@@ -1,8 +1,8 @@
 #![allow(unused)]
 
-type Vec3 = cgmath::Vector3<f64>;
-type Point3 = Vec3;
-type Color = Vec3;
+mod vec3;
+
+use crate::vec3::Color;
 
 const DISPLAY_WIDTH: u32 = 1600;
 const DISPLAY_HEIGHT: u32 = 900;
