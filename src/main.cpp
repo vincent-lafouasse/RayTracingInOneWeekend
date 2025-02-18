@@ -80,7 +80,7 @@ int main() {
     const Point3 pixel00 =
         viewport_top_left + 0.5 * (pixel_delta_u + pixel_delta_v);
 
-    const Sphere sphere = {.center = Point3(0, 0, -1), .radius = 0.5};
+    const Sphere sphere{.center = Point3(0, 0, -1), .radius = 0.5};
 
     std::cout << "P3\n" << display_width << " " << display_height << "\n255\n";
 
