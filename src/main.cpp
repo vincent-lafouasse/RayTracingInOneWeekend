@@ -12,8 +12,8 @@ Color ray_color(const Ray& r) {
     const Color white(1.0, 1.0, 1.0);
     const Color blue(0.0, 0.0, 1.0);
 
-    // a == 0 when y == -1
-    // a == 1 when y == 1
+    // a == 0 when y == -1 -> white
+    // a == 1 when y == 1  -> blue
     const double a = 0.5 * (unit_direction.y() + 1.0);
     return (1.0 - a) * white + a * blue;
 }
@@ -32,14 +32,16 @@ int main() {
     constexpr double viewport_height = 2.0;
     constexpr double viewport_width = viewport_height * effective_aspect_ratio;
 
+    // notice the viewport is orthogonal to Oz
     const Vec3 viewport_u(viewport_width, 0, 0);
     const Vec3 viewport_v(0, -viewport_height, 0);
 
     const Vec3 pixel_delta_u = viewport_u / display_width;
     const Vec3 pixel_delta_v = viewport_v / display_height;
 
+    const Point3 viewport_center = camera - Vec3(0, 0, fov);
     const Point3 viewport_top_left =
-        camera - Vec3(0, 0, fov) - viewport_u / 2 - viewport_v / 2;
+        viewport_center - viewport_u / 2 - viewport_v / 2;
     const Point3 pixel00 =
         viewport_top_left + 0.5 * (pixel_delta_u + pixel_delta_v);
 
