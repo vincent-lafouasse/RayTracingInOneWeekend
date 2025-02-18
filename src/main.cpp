@@ -73,7 +73,8 @@ int main() {
     const Vec3 pixel_delta_u = viewport_u / display_width;
     const Vec3 pixel_delta_v = viewport_v / display_height;
 
-    const Point3 viewport_center = camera - Vec3(0, 0, fov);
+    // notice we look along the negative z-axis
+    const Point3 viewport_center = camera + Vec3(0, 0, -fov);
     const Point3 viewport_top_left =
         viewport_center - viewport_u / 2 - viewport_v / 2;
     const Point3 pixel00 =
