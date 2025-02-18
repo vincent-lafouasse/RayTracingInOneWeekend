@@ -19,6 +19,14 @@ fn log_progress(advancement: f32) {
     );
 }
 
+fn write_color(color: &Color) {
+    let r_byte: u8 = (255.999 * color[0]) as u8;
+    let g_byte: u8 = (255.999 * color[1]) as u8;
+    let b_byte: u8 = (255.999 * color[2]) as u8;
+
+    println!("{r_byte} {g_byte} {b_byte}");
+}
+
 fn main() {
     println!("P3");
     println!("{DISPLAY_WIDTH} {DISPLAY_HEIGHT}");
@@ -31,11 +39,8 @@ fn main() {
             let green: f64 = 0.0;
             let blue: f64 = col as f64 / (DISPLAY_HEIGHT as f64 - 1.0);
 
-            let r_byte: u8 = (255.999 * red) as u8;
-            let g_byte: u8 = (255.999 * green) as u8;
-            let b_byte: u8 = (255.999 * blue) as u8;
-
-            println!("{r_byte} {g_byte} {b_byte}");
+            let color = Color::new(red, green, blue);
+            write_color(&color);
         }
     }
 }
