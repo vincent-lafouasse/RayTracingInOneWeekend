@@ -36,8 +36,13 @@ struct Sphere {
 };
 
 Color ray_color(const Ray& r, const Sphere& s) {
-    if (s.is_hit(r) > 0.0)
-        return Colors::RED;
+    const double t = s.is_hit(r);
+    if (t > 0.0) {
+        const Point3 intersection = r.at(t) - s.center;
+        const Vec3 normal = intersection.normalized();
+        // scale from [-1, 1] to [0, 1]
+        return 0.5 * (normal + Vec3(1, 1, 1));
+    }
 
     const Vec3 unit_direction = r.direction().normalized();
 
