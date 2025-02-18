@@ -23,14 +23,14 @@ struct Sphere {
     double is_hit(const Ray& r) const {
         const Vec3 oc = this->center - r.origin();
         const double a = Vec3::dot(r.direction(), r.direction());
-        const double b = -2.0 * Vec3::dot(oc, r.direction());
-        const double c = Vec3::dot(oc, oc) - this->radius * this->radius;
-        const double discriminant = b * b - 4 * a * c;
+        const double h = Vec3::dot(r.direction(), oc);
+        const double c = Vec3::dot(oc, oc) - radius * radius;
+        const double discriminant = h * h - a * c;
 
         if (discriminant < 0) {
             return -1.0;
         } else {
-            return (-b - std::sqrt(discriminant)) / (2.0 * a);
+            return (h - std::sqrt(discriminant)) / a;
         }
     }
 };
