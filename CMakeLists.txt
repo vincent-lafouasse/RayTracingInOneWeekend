@@ -18,6 +18,8 @@ target_sources(${EXEC_NAME} PRIVATE
     src/Color.hpp
     src/Ray.cpp
     src/Ray.hpp
+    src/Hittable.hpp
+    src/Sphere.hpp
 )
 
 target_include_directories(${EXEC_NAME} PUBLIC
