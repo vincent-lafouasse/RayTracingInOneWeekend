@@ -1,4 +1,5 @@
 #include <iostream>
+#include <limits>
 #include "Color.hpp"
 #include "Ray.hpp"
 #include "Scene.hpp"
@@ -19,8 +20,12 @@ const Color BLACK(0.0, 0.0, 0.0);
 const Color RED(1.0, 0.0, 0.0);
 };  // namespace Colors
 
+namespace {
+constexpr double infinity = std::numeric_limits<double>::infinity();
+}
+
 Color ray_color(const Ray& r, const Hittable& object) {
-    const HitRecord rec = object.hit(r, 0.0, 1.0);
+    const HitRecord rec = object.hit(r, 0.0, infinity);
     if (rec) {
         // scale from [-1, 1] to [0, 1]
         return 0.5 * (rec.normal + Vec3(1, 1, 1));
