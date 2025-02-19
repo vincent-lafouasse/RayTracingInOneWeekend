@@ -3,6 +3,8 @@
 #include "Ray.hpp"
 #include "Sphere.hpp"
 
+#include <memory>
+
 namespace Config {
 constexpr double DISPLAY_ASPECT_RATIO = 16.0 / 9.0;
 constexpr int DISPLAY_HEIGHT = 400;
@@ -58,7 +60,8 @@ int main() {
     const Point3 pixel00 =
         viewport_top_left + 0.5 * (pixel_delta_u + pixel_delta_v);
 
-    const Sphere sphere(Point3(0, 0, -1), 0.5);
+    std::shared_ptr<Hittable> sphere =
+        std::make_shared<Sphere>(Point3(0, 0, -1), 0.5);
 
     std::cout << "P3\n" << display_width << " " << display_height << "\n255\n";
 
@@ -68,7 +71,7 @@ int main() {
         for (int col = 0; col < display_width; ++col) {
             Point3 pixel = pixel00 + col * pixel_delta_u + row * pixel_delta_v;
             Ray ray(camera, pixel - camera);
-            Color color = ray_color(ray, sphere);
+            Color color = ray_color(ray, *sphere);
 
             writeColor(std::cout, color);
             std::cout << '\n';
