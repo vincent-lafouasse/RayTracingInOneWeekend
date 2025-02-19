@@ -17,8 +17,8 @@ const Color RED(1.0, 0.0, 0.0);
 };  // namespace Colors
 
 Color ray_color(const Ray& r, const Sphere& s) {
-    HitRecord rec;
-    if (s.hit(r, 0.0, 1.0, rec)) {
+    HitRecord rec = s.hit(r, 0.0, 1.0);
+    if (rec) {
         // scale from [-1, 1] to [0, 1]
         return 0.5 * (rec.normal + Vec3(1, 1, 1));
     }
