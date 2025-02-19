@@ -21,6 +21,7 @@ target_sources(${EXEC_NAME} PRIVATE
     src/Hittable.hpp
     src/Sphere.hpp
     src/Scene.hpp
+    src/Scene.cpp
 )
 
 target_include_directories(${EXEC_NAME} PUBLIC
