@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Color.hpp"
 #include "Ray.hpp"
+#include "Scene.hpp"
 #include "Sphere.hpp"
 
 #include <memory>
@@ -63,6 +64,9 @@ int main() {
     std::shared_ptr<Hittable> sphere =
         std::make_shared<Sphere>(Point3(0, 0, -1), 0.5);
 
+    Scene scene;
+    scene.add(std::move(sphere));
+
     std::cout << "P3\n" << display_width << " " << display_height << "\n255\n";
 
     for (int row = 0; row < display_height; ++row) {
@@ -71,7 +75,7 @@ int main() {
         for (int col = 0; col < display_width; ++col) {
             Point3 pixel = pixel00 + col * pixel_delta_u + row * pixel_delta_v;
             Ray ray(camera, pixel - camera);
-            Color color = ray_color(ray, *sphere);
+            Color color = ray_color(ray, scene);
 
             writeColor(std::cout, color);
             std::cout << '\n';
