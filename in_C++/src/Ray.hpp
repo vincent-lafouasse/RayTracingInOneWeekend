@@ -23,6 +23,6 @@ class Ray final {
     };
 
    private:
-    Point3 __origin;
-    Vec3 __direction;
+    Point3 m_origin;
+    Vec3 m_direction;
 };
