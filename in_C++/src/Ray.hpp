@@ -17,9 +17,9 @@ class Ray final {
     class NullDirectionException final : public std::runtime_error {
        public:
         explicit NullDirectionException(const char* what)
-            : runtime_error(what) {};
+            : runtime_error(what){};
         NullDirectionException()
-            : NullDirectionException("Direction vector is null") {};
+            : NullDirectionException("Direction vector is null"){};
     };
 
    private:
