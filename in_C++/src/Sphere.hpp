@@ -9,10 +9,7 @@ class Sphere final : public Hittable {
         : center(center), radius(radius) {}
 
     // returns the value of t in the equation Ray = origin + t * direction
-    bool hit(const Ray& r,
-             double t_min,
-             double t_max,
-             HitRecord& rec) const override {
+    HitRecord hit(const Ray& r, double t_min, double t_max) const override {
         const Vec3 oc = this->center - r.origin();
         const double a = Vec3::dot(r.direction(), r.direction());
         const double h = Vec3::dot(r.direction(), oc);
@@ -20,7 +17,7 @@ class Sphere final : public Hittable {
         const double discriminant = h * h - a * c;
 
         if (discriminant < 0) {
-            return false;
+            return HitRecord::None();
         }
 
         const double sqrtDiscriminant = std::sqrt(discriminant);
@@ -30,14 +27,16 @@ class Sphere final : public Hittable {
         if (root <= t_min || root >= t_max) {
             root = (h + sqrtDiscriminant) / a;
             if (root <= t_min || root >= t_max) {
-                return false;
+                return HitRecord::None();
             }
         }
-        rec.t = root;
-        rec.p = r.at(root);
-        rec.normal = (rec.p - this->center) / this->radius;
-        return true;
+        double t = root;
+        Vec3 p = r.at(root);
+        Vec3 normal = (p - this->center) / this->radius;
+        return HitRecord(p, normal, t);
     }
+
+    virtual ~Sphere() = default;
 
    private:
     Point3 center;
