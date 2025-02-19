@@ -18,6 +18,7 @@ add_executable(${EXEC_NAME}
 	src/Ray.hpp
 	src/Hittable.hpp
 	src/Sphere.hpp
+	src/Sphere.cpp
 	src/Scene.hpp
 	src/Scene.cpp
 )
