@@ -67,9 +67,9 @@ struct Vec3 final {
     };
 
    private:
-    double __x;
-    double __y;
-    double __z;
+    double x_coordinate;
+    double y_coordinate;
+    double z_coordinate;
 };
 
 using Point3 = Vec3;
