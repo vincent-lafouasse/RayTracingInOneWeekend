@@ -8,7 +8,6 @@ class Sphere final : public Hittable {
     Sphere(const Point3& center, const double radius)
         : center(center), radius(radius) {}
 
-    // returns the value of t in the equation Ray = origin + t * direction
     HitRecord hit(const Ray& r,
                   const double t_min,
                   const double t_max) const override {
