@@ -5,7 +5,7 @@
 
 namespace Config {
 constexpr double DISPLAY_ASPECT_RATIO = 16.0 / 9.0;
-constexpr int DISPLAY_HEIGHT = 800;
+constexpr int DISPLAY_HEIGHT = 400;
 };  // namespace Config
 
 namespace Colors {
