@@ -5,8 +5,6 @@
 #include "Scene.hpp"
 #include "Sphere.hpp"
 
-#include <memory>
-
 namespace Config {
 constexpr double DISPLAY_ASPECT_RATIO = 16.0 / 9.0;
 constexpr int DISPLAY_HEIGHT = 400;
@@ -74,8 +72,8 @@ int main() {
     Scene scene;
     scene.add(std::move(sphere));
     scene.add(std::move(grass));
-    scene.add(std::make_shared<Sphere>(Point3(-1, 0, -1), 0.1));
-    scene.add(std::make_shared<Sphere>(Point3(1, 0, -1), 0.1));
+    scene.add(std::make_shared<Sphere>(Point3(-1, 0, -1), 0.5));
+    scene.add(std::make_shared<Sphere>(Point3(1, 0, -1), 0.5));
 
     std::cout << "P3\n" << display_width << " " << display_height << "\n255\n";
 
