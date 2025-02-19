@@ -68,9 +68,12 @@ int main() {
 
     std::shared_ptr<Hittable> sphere =
         std::make_shared<Sphere>(Point3(0, 0, -1), 0.5);
+    std::shared_ptr<Hittable> grass =
+        std::make_shared<Sphere>(Point3(0, -100.5, -1), 100);
 
     Scene scene;
     scene.add(std::move(sphere));
+    scene.add(std::move(grass));
 
     std::cout << "P3\n" << display_width << " " << display_height << "\n255\n";
 
