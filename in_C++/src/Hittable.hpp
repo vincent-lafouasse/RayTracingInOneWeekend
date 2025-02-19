@@ -7,11 +7,10 @@ struct HitRecord {
     Vec3 normal;
     double t;
 
-    HitRecord(Point3 p, Vec3 normal, double t) : p(p), normal(normal), t(t) {}
-    static HitRecord None() {
-        return HitRecord(Vec3(0, 0, 0), Vec3(0, 0, 0), -1.0);
-    }
-    operator bool() const { return this->t >= 0; };
+    HitRecord(const Point3& p, const Vec3& normal, double t)
+        : p(p), normal(normal), t(t) {}
+    static HitRecord None() { return {Vec3(0, 0, 0), Vec3(0, 0, 0), -1.0}; }
+    explicit operator bool() const { return this->t >= 0; };
 };
 
 class Hittable {
