@@ -72,7 +72,7 @@ double& Vec3::operator[](const std::size_t i) {
 }
 
 Vec3 Vec3::operator+(const Vec3& v) const {
-    return Vec3(this->x() + v.x(), this->y() + v.y(), this->z() + v.z());
+    return {this->x() + v.x(), this->y() + v.y(), this->z() + v.z()};
 }
 
 Vec3 Vec3::operator-(const Vec3& v) const {
@@ -80,11 +80,11 @@ Vec3 Vec3::operator-(const Vec3& v) const {
 }
 
 Vec3 Vec3::operator-() const {
-    return Vec3(-this->x(), -this->y(), -this->z());
+    return {-this->x(), -this->y(), -this->z()};
 }
 
 Vec3 Vec3::operator*(const double s) const {
-    return Vec3(this->x() * s, this->y() * s, this->z() * s);
+    return {this->x() * s, this->y() * s, this->z() * s};
 }
 
 Vec3 Vec3::operator/(const double s) const {
@@ -161,9 +161,9 @@ double Vec3::dot(const Vec3& v1, const Vec3& v2) {
 }
 
 Vec3 Vec3::cross(const Vec3& v) const {
-    return Vec3(this->y() * v.z() - this->z() * v.y(),
-                this->z() * v.x() - this->x() * v.z(),
-                this->x() * v.y() - this->y() * v.x());
+    return {this->y() * v.z() - this->z() * v.y(),
+            this->z() * v.x() - this->x() * v.z(),
+            this->x() * v.y() - this->y() * v.x()};
 }
 
 Vec3 Vec3::cross(const Vec3& v1, const Vec3& v2) {
