@@ -10,14 +10,6 @@ constexpr double DISPLAY_ASPECT_RATIO = 16.0 / 9.0;
 constexpr int DISPLAY_HEIGHT = 400;
 };  // namespace Config
 
-namespace Colors {
-const Color WHITE(1.0, 1.0, 1.0);
-const Color BLUE(0.0, 0.0, 1.0);
-const Color LIGHT_BLUE(0.5, 0.7, 1.0);
-const Color BLACK(0.0, 0.0, 0.0);
-const Color RED(1.0, 0.0, 0.0);
-};  // namespace Colors
-
 Color ray_color(const Ray& r, const Hittable& object) {
     const HitRecord rec = object.hit(r, Interval::R_plus());
     if (rec) {
