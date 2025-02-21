@@ -11,6 +11,7 @@ class Camera final {
 
    private:
     static Color ray_color(const Ray& r, const Hittable& scene);
+    Ray get_ray(uint32_t row, uint32_t col) const;
 
     uint32_t width, height;
     Point3 eye;

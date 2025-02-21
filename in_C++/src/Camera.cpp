@@ -33,14 +33,18 @@ void Camera::render(const Hittable& scene) const {
         std::clog << "Scanlines remaining: " << (this->height - row)
                   << std::endl;
         for (uint32_t col = 0; col < this->width; ++col) {
-            Point3 pixel = pixel00 + col * this->delta_u + row * this->delta_v;
-            Ray ray(this->eye, pixel - this->eye);
+            Ray ray = this->get_ray(row, col);
             Color color = Camera::ray_color(ray, scene);
 
             writeColor(std::cout, color);
             std::cout << '\n';
         }
     }
+}
+
+Ray Camera::get_ray(uint32_t row, uint32_t col) const {
+    Point3 pixel = pixel00 + col * this->delta_u + row * this->delta_v;
+    return Ray(this->eye, pixel - this->eye);
 }
 
 Color Camera::ray_color(const Ray& r, const Hittable& scene) {
