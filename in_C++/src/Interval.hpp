@@ -10,13 +10,10 @@ struct Interval final {
     bool contains(double x) const;
     bool surrounds(double x) const;
 
-    static const Interval empty;
-    static const Interval R;
-    static const Interval R_plus;
+    static Interval empty() { return {+infinity, -infinity}; }
+    static Interval R() { return {-infinity, +infinity}; }
+    static Interval R_plus() { return {0, +infinity}; }
 
     double min, max;
 };
 
-const Interval empty(+infinity, -infinity);
-const Interval R(-infinity, +infinity);
-const Interval R_plus(0, +infinity);
