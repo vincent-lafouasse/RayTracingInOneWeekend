@@ -8,7 +8,7 @@ class Sphere final : public Hittable {
     Sphere(const Point3& center, double radius);
     ~Sphere() override = default;
 
-    HitRecord hit(const Ray& r, double t_min, double t_max) const override;
+    HitRecord hit(const Ray& r, Interval range) const override;
 
    private:
     Point3 center;

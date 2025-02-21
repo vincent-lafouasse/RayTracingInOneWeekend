@@ -1,13 +1,12 @@
 #include "Scene.hpp"
 
-HitRecord Scene::hit(const Ray& ray, double t_min, double t_max) const {
+HitRecord Scene::hit(const Ray& ray, Interval range) const {
     HitRecord out = HitRecord::None();
-    double closest = t_max;
 
     for (const std::shared_ptr<Hittable>& object : this->objects) {
-        HitRecord rec = object->hit(ray, t_min, closest);
+        HitRecord rec = object->hit(ray, range);
         if (rec) {
-            closest = rec.t;
+            range.max = rec.t;
             out = rec;
         }
     }

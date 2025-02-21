@@ -12,7 +12,7 @@ class Scene final : public Hittable {
 
     void add(std::shared_ptr<Hittable> object);
     void clear();
-    HitRecord hit(const Ray& ray, double t_min, double t_max) const override;
+    HitRecord hit(const Ray& ray, Interval range) const override;
 
    private:
     std::vector<std::shared_ptr<Hittable>> objects;
