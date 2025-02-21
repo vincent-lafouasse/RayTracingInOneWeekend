@@ -9,7 +9,7 @@ Camera::Camera(const uint32_t width, const double aspect_ratio)
       eye(Point3(0, 0, 0)),
       fov(1.0) {
     const double effective_aspect_ratio = width / static_cast<double>(height);
-    const double viewport_height = 2.0;
+    constexpr double viewport_height = 2.0;
     const double viewport_width = viewport_height * effective_aspect_ratio;
 
     // notice the viewport is orthogonal to Oz
