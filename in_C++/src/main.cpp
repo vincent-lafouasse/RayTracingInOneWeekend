@@ -1,8 +1,5 @@
 #include <iostream>
 #include "Camera.hpp"
-#include "Color.hpp"
-#include "Interval.hpp"
-#include "Ray.hpp"
 #include "Scene.hpp"
 #include "Sphere.hpp"
 
@@ -12,7 +9,7 @@ constexpr uint32_t DISPLAY_WIDTH = 600;
 };  // namespace Config
 
 int main() {
-    Camera camera(Config::DISPLAY_WIDTH, Config::DISPLAY_ASPECT_RATIO);
+    const Camera camera(Config::DISPLAY_WIDTH, Config::DISPLAY_ASPECT_RATIO);
 
     std::shared_ptr<Hittable> sphere =
         std::make_shared<Sphere>(Point3(0, 0, -1), 0.5);
