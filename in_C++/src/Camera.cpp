@@ -1,5 +1,6 @@
 #include "Camera.hpp"
 
+#include <iostream>
 #include "Color.hpp"
 
 Camera::Camera(const uint32_t width, const double aspect_ratio)
@@ -26,8 +27,20 @@ Camera::Camera(const uint32_t width, const double aspect_ratio)
 }
 
 void Camera::render(const Hittable& scene) const {
-    (void)this;
-    (void)scene;
+    std::cout << "P3\n" << this->width << " " << this->height << "\n255\n";
+
+    for (uint32_t row = 0; row < this->height; ++row) {
+        std::clog << "Scanlines remaining: " << (this->height - row)
+                  << std::endl;
+        for (uint32_t col = 0; col < this->width; ++col) {
+            Point3 pixel = pixel00 + col * this->delta_u + row * this->delta_v;
+            Ray ray(this->eye, pixel - this->eye);
+            Color color = Camera::ray_color(ray, scene);
+
+            writeColor(std::cout, color);
+            std::cout << '\n';
+        }
+    }
 }
 
 Color Camera::ray_color(const Ray& r, const Hittable& scene) {
