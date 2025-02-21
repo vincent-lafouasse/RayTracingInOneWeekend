@@ -18,9 +18,9 @@ HitRecord Sphere::hit(const Ray& r, Interval range) const {
 
     // try the lowest root then highest root
     double root = (h - sqrtDiscriminant) / a;
-    if (root <= range.min || root >= range.max) {
+    if (range.contains(root)) {
         root = (h + sqrtDiscriminant) / a;
-        if (root <= range.min || root >= range.max) {
+        if (range.contains(root)) {
             return HitRecord::None();
         }
     }
