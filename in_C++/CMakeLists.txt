@@ -23,6 +23,8 @@ add_executable(${EXEC_NAME}
 	src/Scene.cpp
 	src/Interval.hpp
 	src/Interval.cpp
+	src/Camera.hpp
+	src/Camera.cpp
 	src/common_math.h
 )
 
