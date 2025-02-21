@@ -3,7 +3,7 @@
 Sphere::Sphere(const Point3& center, const double radius)
     : center(center), radius(radius) {}
 
-HitRecord Sphere::hit(const Ray& r, Interval range) const {
+HitRecord Sphere::hit(const Ray& r, const Interval range) const {
     const Vec3 oc = this->center - r.origin();
     const double a = Vec3::dot(r.direction(), r.direction());
     const double h = Vec3::dot(r.direction(), oc);
@@ -18,9 +18,9 @@ HitRecord Sphere::hit(const Ray& r, Interval range) const {
 
     // try the lowest root then highest root
     double root = (h - sqrtDiscriminant) / a;
-    if (range.contains(root)) {
+    if (!range.surrounds(root)) {
         root = (h + sqrtDiscriminant) / a;
-        if (range.contains(root)) {
+        if (!range.surrounds(root)) {
             return HitRecord::None();
         }
     }
