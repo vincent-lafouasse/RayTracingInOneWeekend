@@ -1,5 +1,6 @@
 #include "Color.hpp"
 
+namespace {
 uint8_t clamp(uint16_t color) {
     if (color > 255) {
         return 255;
@@ -7,6 +8,7 @@ uint8_t clamp(uint16_t color) {
 
     return color;
 }
+}  // namespace
 
 void writeColor(std::ostream& os, const Color& color) {
     const uint8_t red = clamp(256.0 * color.r());
