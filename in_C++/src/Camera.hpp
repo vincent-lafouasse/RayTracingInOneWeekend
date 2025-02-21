@@ -8,5 +8,5 @@ class Camera final {
     void render(const Hittable& scene) const;
 
    private:
-    Color ray_color(const Ray& r, const Hittable& scene) const;
+    static Color ray_color(const Ray& r, const Hittable& scene);
 };
