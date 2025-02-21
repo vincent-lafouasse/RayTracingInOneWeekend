@@ -1,9 +1,17 @@
 #include "Color.hpp"
 
-void writeColor(std::ostream& os, const Color& color) {
-    const int int_r = static_cast<int>(color.r() * 255.9999);
-    const int int_g = static_cast<int>(color.g() * 255.9999);
-    const int int_b = static_cast<int>(color.b() * 255.9999);
+uint8_t clamp(uint16_t color) {
+    if (color > 255) {
+        return 255;
+    }
 
-    os << int_r << " " << int_g << " " << int_b;
+    return color;
+}
+
+void writeColor(std::ostream& os, const Color& color) {
+    const uint8_t red = clamp(256.0 * color.r());
+    const uint8_t green = clamp(256.0 * color.g());
+    const uint8_t blue = clamp(256.0 * color.b());
+
+    os << +red << " " << +green << " " << +blue;
 }
