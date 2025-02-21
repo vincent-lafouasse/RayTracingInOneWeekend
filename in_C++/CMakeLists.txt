@@ -21,6 +21,7 @@ add_executable(${EXEC_NAME}
 	src/Sphere.cpp
 	src/Scene.hpp
 	src/Scene.cpp
+	src/common_math.h
 )
 
 target_include_directories(${EXEC_NAME} PUBLIC
