@@ -26,6 +26,7 @@ add_executable(${EXEC_NAME}
 	src/Camera.hpp
 	src/Camera.cpp
 	src/common_math.h
+	src/math.cpp
 )
 
 target_include_directories(${EXEC_NAME} PUBLIC
