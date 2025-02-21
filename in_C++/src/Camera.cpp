@@ -2,7 +2,10 @@
 
 #include "Color.hpp"
 
-void Camera::render(const Hittable& scene) const {}
+void Camera::render(const Hittable& scene) const {
+    (void)this;
+    (void)scene;
+}
 
 Color Camera::ray_color(const Ray& r, const Hittable& scene) {
     const HitRecord rec = scene.hit(r, Interval::R_plus());
