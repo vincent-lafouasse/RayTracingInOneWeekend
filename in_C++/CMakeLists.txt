@@ -21,6 +21,8 @@ add_executable(${EXEC_NAME}
 	src/Sphere.cpp
 	src/Scene.hpp
 	src/Scene.cpp
+	src/Interval.hpp
+	src/Interval.cpp
 	src/common_math.h
 )
 
