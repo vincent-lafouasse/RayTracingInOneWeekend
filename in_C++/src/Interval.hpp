@@ -11,10 +11,12 @@ struct Interval final {
     bool surrounds(double x) const;
 
     static const Interval empty;
-    static const Interval universe;
+    static const Interval R;
+    static const Interval R_plus;
 
     double min, max;
 };
 
 const Interval empty(+infinity, -infinity);
-const Interval universe(-infinity, +infinity);
+const Interval R(-infinity, +infinity);
+const Interval R_plus(0, +infinity);

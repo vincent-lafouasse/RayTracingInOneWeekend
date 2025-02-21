@@ -19,7 +19,7 @@ const Color RED(1.0, 0.0, 0.0);
 };  // namespace Colors
 
 Color ray_color(const Ray& r, const Hittable& object) {
-    const HitRecord rec = object.hit(r, Interval(0, infinity));
+    const HitRecord rec = object.hit(r, Interval::R_plus);
     if (rec) {
         // scale from [-1, 1] to [0, 1]
         return 0.5 * (rec.normal + Vec3(1, 1, 1));
