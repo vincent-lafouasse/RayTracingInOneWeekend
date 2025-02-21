@@ -16,4 +16,3 @@ struct Interval final {
 
     double min, max;
 };
-
